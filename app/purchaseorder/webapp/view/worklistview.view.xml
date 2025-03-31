@@ -1,0 +1,95 @@
+<mvc:View controllerName="purchaseorder.controller.worklistview"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    >
+    <Page id="page" title="{i18n>title}">
+    <content>
+    <!-- Filters -->
+            <Panel class="sapUiSmallMarginTopBottom">
+                <fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad" showClearOnFB="true" clear="onClear">
+                    <fb:filterGroupItems>
+                        <!-- Request ID filter -->
+                        <fb:FilterGroupItem name="Purchase Order" label="Purchase Order" groupName="Group1" visibleInFilterBar="true">
+                            <fb:control>
+                                <ComboBox>
+                                
+                                </ComboBox>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <!-- Status Filter chnage binding after getting master data -->
+                        <fb:FilterGroupItem  name="Supplier" label="Supplier" groupName="Group2" visibleInFilterBar="true">
+                            <fb:control>
+                                <ComboBox selectedKey="">
+                                    
+                                </ComboBox>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <!-- Status Filter chnage binding after getting master data -->
+                        <fb:FilterGroupItem  name="Company Code" label="Company Code" groupName="Group2" visibleInFilterBar="true">
+                            <fb:control>
+                                <ComboBox selectedKey="">
+                                    
+                                </ComboBox>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+
+                        <!-- Status Filter chnage binding after getting master data -->
+                        <fb:FilterGroupItem  name="Editing Status" label="Editing Status" groupName="Group2" visibleInFilterBar="true">
+                            <fb:control>
+                                <ComboBox selectedKey="">
+                                    
+                                </ComboBox>
+                            </fb:control>
+                        </fb:FilterGroupItem>
+                    </fb:filterGroupItems>
+                </fb:FilterBar>
+            </Panel>
+
+    <Table id="requestTable" alternateRowColors="true" items="{oModel>/PurchaseOrders}">
+    	<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="Purchase Orders" level="H2"/>
+					<ToolbarSpacer />
+					<ToggleButton
+						text="Create Purchase Order"
+						press="onToggleInfoToolbar" width="180px" icon="sap-icon://create" type="Accept"/>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+                    <columns>
+                        <Column>
+                            <Label text="Purchase Order"/>
+                        </Column>
+                        <Column>
+                            <Label text="Supplier"  />
+                        </Column>
+                        <Column>
+                            <Label text="Company Code" />
+                        </Column>
+
+                        <Column>
+                            <Label text="Purchase Order Date" />
+                        </Column>
+                        <Column>
+                            <Label text="Purchasing Doc. Type" />
+                        </Column>
+                    </columns>
+                    <ColumnListItem type="Navigation" press="onRowPress">
+                        <cells>
+                            <Text text="{oModel>PurchaseOrder}"/>
+                            <Text text="{oModel>Supplier}" />
+                            <Text text="{oModel>CompanyCode}" />
+                            <Text text="{oModel>PurchaseOrderDate}" />
+                            <Text text="{oModel>PurchaseOrderType}" />
+                            <!-- <ObjectStatus text="{path: 'status', formatter: '._onFormatStateText'}" icon="{path: 'status', formatter: '._onFormatStateIcon'}" state="{path: 'status', formatter: '._onFormatState'}"/> -->
+                        </cells>
+                    </ColumnListItem>
+                  
+                </Table>
+    </content>
+    </Page>
+</mvc:View>

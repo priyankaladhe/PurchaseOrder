@@ -1,0 +1,173 @@
+<mvc:View controllerName="purchaseorder.controller.objectview"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:n="sap.f"
+    xmlns:cards="sap.ui.integration.widgets.Card"
+    xmlns:card="sap.f.cards"
+    xmlns:f="sap.ui.layout.form"
+	xmlns:forms="sap.ui.layout.form"
+    xmlns:m="sap.m"
+    >
+    <Page title="{i18n>title}">
+    <content>
+    <HBox>
+     <n:Card class="sapUiMediumMargin" width="250px">
+        <n:header>
+            <card:Header
+                title="Purchase Order"
+                subtitle="4500000000"
+                iconSrc="sap-icon://sales-order" />
+        </n:header>
+    </n:Card>
+
+    <n:Card class="sapUiMediumMargin" width="250px">
+        <n:header>
+            <card:Header
+                title="Purchase order date"
+                subtitle="03/25/2025"
+                iconSrc="sap-icon://sales-order" />
+        </n:header>
+    </n:Card>
+
+    <n:Card class="sapUiMediumMargin" width="250px">
+        <n:header>
+            <card:Header
+                title="Net Value"
+                subtitle="55.00 USD"
+                iconSrc="sap-icon://sales-order" />
+        </n:header>
+    </n:Card>
+    </HBox>
+    <IconTabBar
+		id="idIconTabBarMulti"
+		expanded="{device>/isNoPhone}"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter icon="sap-icon://information" text="General Information"
+            key="info" iconColor="Positive" design="Horizontal">
+			<forms:SimpleForm
+            editable="true"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false"
+			ariaLabelledBy="Title1">
+            <Toolbar ariaLabelledBy="Title2">
+					<Title id="Title2" text="Basic Data"/>
+					<ToolbarSpacer />
+			</Toolbar>
+
+								<m:Label text="Purchasing Doc. Type"/>
+								<m:Input value="{oModel>/payload/PurchaseOrderType}"/>
+
+								<!-- <m:Label text="Currency" />
+								<m:Input value="{oModel>/payload/DocumentCurrency}"/> -->
+
+								<m:Label text="Supplier" />
+								<m:Input value="{oModel>/payload/Supplier}"/>
+
+								<!-- <m:Label text="Language Key"/>
+								<m:Input value="EN"/> -->
+
+                    <Toolbar ariaLabelledBy="Title3">
+					<Title id="Title3" text="Organization Deatails"/>
+					<ToolbarSpacer />
+                    </Toolbar>
+                        <Label text="Purchasing Group" />
+                        <Input value="{oModel>/payload/PurchasingGroup}" />
+
+                        <Label text="Purchasing Organization" />
+                        <Input value="{oModel>/payload/PurchasingOrganization}" />
+
+                        <Label text="Company Code" />
+                        <Input value="{oModel>/payload/CompanyCode}" />
+						</forms:SimpleForm>
+
+                <m:Table updateFinished="onTableUpdateFinished"
+                noDataText="No purchase order items available"
+                alternateRowColors="true" class = "sapUiSmallMarginBottom"
+                items = "{oModel>/payload/_PurchaseOrderItem}">
+
+				<m:headerToolbar>
+                <m:Toolbar>
+                    <m:ToolbarSpacer/> <!-- Push the button to the right -->
+                    <m:Button 
+                        text="Add Items" 
+                        type="Neutral" 
+                        press=".onAddItems"
+						icon="sap-icon://sales-order-item" 
+                    />
+            </m:Toolbar>
+            </m:headerToolbar>
+							
+								<m:columns>
+									<m:Column>
+										<m:Label text="Item"/>
+									</m:Column>
+									<m:Column>
+										<m:Label text="Material"/>
+									</m:Column>
+									<m:Column>
+										<m:Label text="Plant" />
+									</m:Column>
+                                    <m:Column>
+										<m:Label text="Order Quantity" />
+									</m:Column>
+                                    <m:Column>
+										<m:Label text="Purchase Order Quantity" />
+									</m:Column>
+                                    <m:Column>
+										<m:Label text="Net Order Price" />
+									</m:Column>
+                                     <m:Column>
+										<m:Label text="Document Currency" />
+									</m:Column>
+								</m:columns>
+
+								<m:ColumnListItem>
+									<m:cells>
+										 
+                                            <m:Text text="{oModel>PurchaseOrderItem}"/> <!-- Auto-incremented -->
+                                            <m:Input value="{oModel>Material}" placeholder="Enter Material"/>
+                                            <m:Input value="{oModel>Plant}" placeholder="Enter Plant"/>
+                                            <m:Input value="{oModel>OrderQuantity}" placeholder="Enter Quantity"/>
+                                            <m:Input value="{oModel>PurchaseOrderQuantityUnit}" placeholder="Enter Unit"/>
+                                            <m:Input value="{oModel>NetPriceAmount}" placeholder="Enter Price"/>
+                                            <m:Input value="{oModel>DocumentCurrency}" placeholder="Enter Currency"/>
+									</m:cells>
+								</m:ColumnListItem>
+							</m:Table>
+
+                    <m:Toolbar>
+                    <m:ToolbarSpacer/> <!-- Push the button to the right -->
+                    <m:Button 
+                        text="Submit Order" 
+                        type="Success" 
+                        press=".onSubmitOrder"
+						icon="sap-icon://sales-order" 
+                    />
+            </m:Toolbar>
+
+			</IconTabFilter>
+
+			<IconTabFilter
+				icon="sap-icon://notes" iconColor="Marker" text="Notes"
+				key="notes" design="Horizontal">
+				<Text text="Attachments go here ..." />
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+    </content>
+    </Page>
+</mvc:View>

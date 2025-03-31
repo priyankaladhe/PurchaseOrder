@@ -1,0 +1,21 @@
+###
+POST http://localhost:4004/odata/v4/my/PostPurchaseOrderData
+Content-Type: application/json
+
+{"encode":"ewogICAgIkNvbXBhbnlDb2RlIjogIjE3MTAiLAogICAgIlB1cmNoYXNlT3JkZXJUeXBlIjogIk5CIiwKICAgICJQdXJjaGFzaW5nR3JvdXAiOiAiMDAxIiwKICAgICJQdXJjaGFzaW5nT3JnYW5pemF0aW9uIjogIjE3MTAiLAogICAgIlN1cHBsaWVyIjogIjE3MzAwMDAxIiwKICAgICJfUHVyY2hhc2VPcmRlckl0ZW0iOiBbCiAgICAgICAgewogICAgICAgICAgICAiUGxhbnQiOiAiMTcxMCIsCiAgICAgICAgICAgICJQdXJjaGFzZU9yZGVySXRlbSI6ICIxMCIsCiAgICAgICAgICAgICJPcmRlclF1YW50aXR5IjogMCwKICAgICAgICAgICAgIk1hdGVyaWFsIjogIlItMzExIiwKICAgICAgICAgICAgIlB1cmNoYXNlT3JkZXJRdWFudGl0eVVuaXQiOiAiUEMiLAogICAgICAgICAgICAiTmV0UHJpY2VBbW91bnQiOiAwLjAwLAogICAgICAgICAgICAiRG9jdW1lbnRDdXJyZW5jeSI6ICJVU0QiCiAgICAgICAgfQogICAgXQp9"}
+
+###
+POST http://localhost:4004/odata/v4/my/getPurchaseOrderList
+Content-Type: application/json
+
+{
+
+}
+
+###
+POST http://localhost:4004/odata/v4/my/getPurchaseOrderItems
+Content-Type: application/json
+
+{
+
+}
